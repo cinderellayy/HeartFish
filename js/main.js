@@ -5,8 +5,10 @@ var can1,
 var canWidth, canHeight;
 var lastTime,
     deltaTime;
+//绘制背景
 var bgPic = new Image(); //新建图片对象
-
+//绘制海葵
+var ane;
 document.body.onload = game;
 
 function game() {
@@ -24,6 +26,8 @@ function init() {
     bgPic.src = "./src/background.jpg";
     canWidth = can1.width;
     canHeight = can1.height;
+    ane = new aneObj();
+    ane.init();
 }
 
 function gameloop() {
@@ -31,5 +35,7 @@ function gameloop() {
     var now = Date.now();
     deltaTime = now - lastTime;
     lastTime = now;
+
     drawbackground();
+    ane.draw();
 }
