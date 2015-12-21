@@ -8,10 +8,7 @@ aneObj.prototype.init = function() {
     for (var i = 0; i < this.num; i++) {
         this.x[i] = i*10 + Math.random()*6;
         this.len[i] = 240 + Math.random()*5;
-         
     }
-  
-    console.log("aneinit");
 }
 aneObj.prototype.draw = function() {
 	ctx2.save();
@@ -25,9 +22,7 @@ aneObj.prototype.draw = function() {
         ctx2.moveTo(this.x[i], canHeight);
         ctx2.lineTo(this.x[i], this.len[i] - canHeight);
         ctx2.stroke();
-          
     }
-      
     ctx2.restore();
 }
 

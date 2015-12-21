@@ -9,6 +9,9 @@ var lastTime,
 var bgPic = new Image(); //新建图片对象
 //绘制海葵
 var ane;
+//绘制果实
+var fruit;
+
 document.body.onload = game;
 
 function game() {
@@ -28,6 +31,8 @@ function init() {
     canHeight = can1.height;
     ane = new aneObj();
     ane.init();
+    fruit = new fruitObj();
+    fruit.init();
 }
 
 function gameloop() {
@@ -38,4 +43,6 @@ function gameloop() {
 
     drawbackground();
     ane.draw();
+    fruit.draw();
+
 }
