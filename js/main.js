@@ -44,5 +44,6 @@ function gameloop() {
     drawbackground();
     ane.draw();
     fruit.draw();
+    fruitMonitor();
 
 }
