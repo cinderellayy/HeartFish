@@ -12,15 +12,11 @@ function calLength2(x1, y1, x2, y2) {
 
 
 function randomColor() {
-	var col = [0, 1, 2];
-	col[0] = Math.random() * 100 + 155;
-	col[0] = col[0].toFixed();
-	col[1] = Math.random() * 100 + 155;
-	col[1] = col[1].toFixed();
-	col[2] = Math.random() * 100 + 155;
-	col[2] = col[2].toFixed();
-	var num = Math.floor(Math.random() * 3);
-	col[num] = 0;
+	var col = new Array(3);
+	col[0] = (Math.random() * 100 + 155).toFixed();
+	col[1] = (Math.random() * 100 + 155).toFixed();
+	col[2] = (Math.random() * 100 + 155).toFixed();
+	col[Math.floor(Math.random() * 3)] = 0;
 	return "rgba(" + col[0] + "," + col[1] + "," + col[2] + ",";
 }
 
@@ -62,14 +58,15 @@ function rnd(m) {
 
 function rateRandom(m, n) {
 	var sum = 0;
-	for (var i = 1; i < (n - m); i++) {
+	var len = n - m
+	for (var i = 1; i < len; i++) {
 		sum += i;
 
 	}
 
 	var ran = Math.random() * sum;
 
-	for (var i = 1; i < (n - m); i++) {
+	for (var i = 1; i < len; i++) {
 		ran -= i;
 		if (ran < 0) {
 			return i - 1 + m;
