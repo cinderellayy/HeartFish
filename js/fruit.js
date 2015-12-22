@@ -51,7 +51,6 @@ fruitObj.prototype.draw = function() {
 
 }
 fruitObj.prototype.born = function(i) {
-    // body...
     var aneID = Math.floor(Math.random() * ane.num);
     this.x[i] = ane.x[aneID];
     this.y[i] = ane.len[aneID] - canHeight;
@@ -72,7 +71,6 @@ fruitObj.prototype.born = function(i) {
 }
 //判断果实状态
 function fruitMonitor() {
-    // body...
     var num = 0;
     for (var i = 0; i < fruit.num; i++) {
         if (fruit.alive[i]) num++;
