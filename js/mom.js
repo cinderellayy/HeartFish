@@ -13,7 +13,6 @@ momObj.prototype.init = function() {
     this.angle = 0;
     this.bigEye.src = "./src/bigEye0.png";
     this.bigBody.src = "./src/bigSwim0.png";
-    ctx1.createPattern(this.bigBody,"no-repeat");
     this.bigTail.src = "./src/bigTail0.png";
 }
 

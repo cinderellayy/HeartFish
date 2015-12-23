@@ -10,6 +10,7 @@ var bgPic = new Image(); //绘制背景新建图片对象
 var ane; //绘制海葵
 var fruit; //绘制果实
 var mom; //绘制大鱼
+var baby;//绘制小鱼
 
 var mx; //鼠标坐标
 var my;
@@ -39,7 +40,8 @@ function init() {
     fruit.init();
     mom = new momObj();
     mom.init();
-
+    baby = new babyObj();
+    baby.init();
     mx = canWidth * 0.3;
     my = canHeight * 0.3;
 }
@@ -49,6 +51,7 @@ function gameloop() {
     var now = Date.now();
     deltaTime = now - lastTime;
     lastTime = now;
+    if (deltaTime > 40) { deltaTime = 40;}//解决切换页面时 果实不断变大的问题
     drawbackground();
     ane.draw();
     fruitMonitor();
@@ -56,7 +59,7 @@ function gameloop() {
     ctx1.clearRect(0, 0, canWidth, canHeight);
     mom.draw();
     momFruitCollision();
-
+    baby.draw();
 }
 
 function onMouseMove(e) {
