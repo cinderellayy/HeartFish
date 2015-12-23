@@ -69,6 +69,11 @@ fruitObj.prototype.born = function(i) {
 
 
 }
+//设置果实死亡
+fruitObj.prototype.dead = function(i) {
+    fruit.alive[i] = false;
+}
+
 //判断果实状态
 function fruitMonitor() {
     var num = 0;
@@ -92,7 +97,6 @@ function sendFruit() {
         }
     }
 }
-
 
 
 

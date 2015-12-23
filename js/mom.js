@@ -25,7 +25,7 @@ momObj.prototype.draw = function() {
 	//Math.atan2(y,x);
 	var deltaY = my - this.y;
 	var deltaX = mx - this.x;
-	var beta = Math.atan2(deltaY,deltaX) + Math.PI;//-PI,PI
+	var beta = Math.atan2(deltaY,deltaX) + Math.PI;//-PI,PI;
 	//lerp angle
 	this.angle = lerpAngle(beta, this.angle,0.6);
     ctx1.save();
