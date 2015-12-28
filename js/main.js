@@ -69,10 +69,15 @@ function init() {
         babyBody[i].src = "./src/babyFade" + i + ".png";
 
     }
-
+    //大鱼
     for (var i = 0; i < 8; i++) {
         bigTail[i] = new Image();
         bigTail[i].src = "./src/bigTail" + i + ".png";
+    }
+    for (var i = 0; i < 2; i++) {
+        bigEye[i] = new Image();
+        bigEye[i].src = "./src/bigEye" + i + ".png";
+
     }
 
 }
