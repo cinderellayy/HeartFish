@@ -10,3 +10,12 @@ function momFruitCollision() {
         }
     }
 }
+//大鱼喂小鱼
+function  momBabyCollision() {
+   var l = calLength2(baby.x,baby.y,mom.x,mom.y);
+   if (l < 500) {
+   	  baby.babyBodyCount = 0;
+
+
+   }
+}
