@@ -6,7 +6,7 @@ var fruitObj = function() {
     //果实上浮
     this.l = [];
     this.spd = [];
-    this.fruitType = []; 
+    this.fruitType = [];
     this.orange = new Image();
     this.blue = new Image();
 

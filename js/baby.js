@@ -5,6 +5,9 @@ var babyObj = function() {
     this.babyEye = new Image();
     this.babyBody = new Image();
     this.babyTail = new Image();
+    this.babyTailTimer = 0;
+    this.babyTailCount = 0;
+
 
 }
 
@@ -14,29 +17,39 @@ babyObj.prototype.init = function() {
     this.angle = 0;
     this.babyEye.src = "./src/babyEye0.png";
     this.babyBody.src = "./src/babyFade0.png";
-    this.babyTail.src = "./src/babyTail0.png";
+
 
 }
 
 babyObj.prototype.draw = function() {
 
     //lerp x,y
-    this.x = lerpDistance(mom.x, this.x, 0.98);
-    this.y = lerpDistance(mom.y, this.y, 0.98);
+    this.x = lerpDistance(mom.x, this.x, 0.99);
+    this.y = lerpDistance(mom.y, this.y, 0.99);
 
     //lerp angle
     var deltaY = mom.y - this.y;
     var deltaX = mom.x - this.x;
     var beta = Math.atan2(deltaY, deltaX) + 　Math.PI; //-PI, PI
     //lerp angle
-    this.angle = lerpAngle(beta, this.angle, 0.6);
+    this.angle = lerpAngle(beta, this.angle, 0.4);
+    //baby tail count
+    this.babyTailTimer += deltaTime;
+    if (this.babyTailTimer > 50) {
+        // alert(this.babyTailCount + 1);
+        this.babyTailCount = (this.babyTailCount + 1) % 8;
+        this.babyTailTimer %= 50;
+         // this.scale(0.5,0.5);
 
+    }
     ctx1.save();
     //改变原点的位置translate
     ctx1.translate(this.x, this.y);
+    ctx1.scale(0.5,0.5);
     ctx1.rotate(this.angle);
     //按层次来画，先画的在底下
-    ctx1.drawImage(this.babyTail, -this.babyTail.width * 0.5 + 23, -this.babyTail.height * 0.5);
+var babyTailCount = this.babyTailCount;
+    ctx1.drawImage(babyTail[babyTailCount],-babyTail[babyTailCount].width * 0.5 + 20,-babyTail[babyTailCount].height * 0.5);
     ctx1.drawImage(this.babyBody, -this.babyBody.width * 0.5, -this.babyBody.height * 0.5);
     ctx1.drawImage(this.babyEye, -this.babyEye.width * 0.5, -this.babyEye.height * 0.5);
     ctx1.restore();

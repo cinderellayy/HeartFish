@@ -15,6 +15,8 @@ var baby;//绘制小鱼
 var mx; //鼠标坐标
 var my;
 
+//爱心鱼下 动画
+var babyTail = [];
 
 document.body.onload = game;
 
@@ -44,6 +46,12 @@ function init() {
     baby.init();
     mx = canWidth * 0.3;
     my = canHeight * 0.3;
+
+    for (var i = 0; i < 8; i++) {
+        babyTail[i] = new Image();
+        babyTail[i].src = "./src/bigTail" + i + ".png";
+       
+    }
 }
 
 function gameloop() {
