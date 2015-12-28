@@ -5,11 +5,17 @@ var babyObj = function() {
     this.babyEye = new Image();
     this.babyBody = new Image();
     this.babyTail = new Image();
+    
     this.babyTailTimer = 0;
     this.babyTailCount = 0;
+
     this.babyEyeTimer = 0;
     this.babyEyeCount = 0;
     this.babyEyeInterval = 1000;//时间间隔，当前图片持续多长时间
+
+    this.babyBodyTimer = 0;
+    this.babyBodyCount = 0;
+
 
 
 }
@@ -18,7 +24,6 @@ babyObj.prototype.init = function() {
     this.x = canWidth * 0.5 - 50;
     this.y = canHeight * 0.5 + 50;
     this.angle = 0;
-    this.babyBody.src = "./src/babyFade0.png";
 }
 
 babyObj.prototype.draw = function() {
@@ -50,6 +55,18 @@ babyObj.prototype.draw = function() {
             this.babyEyeInterval = 200;
         }
     }
+//baby body count
+this.babyBodyTimer += deltaTime;
+if (this.babyBodyTimer > 300) {
+    this.babyBodyCount = (this.babyBodyCount +1) % 19;
+    this.babyBodyTimer %= 300;
+    if ( this.babyBodyCount>19) {
+         this.babyBodyCount=19;
+         //game over
+    }
+}
+
+
     ctx1.save();
     //改变原点的位置translate
     ctx1.translate(this.x, this.y);
@@ -58,9 +75,11 @@ babyObj.prototype.draw = function() {
     //按层次来画，先画的在底下
 var babyTailCount = this.babyTailCount;
     ctx1.drawImage(babyTail[babyTailCount],-babyTail[babyTailCount].width * 0.5 + 20,-babyTail[babyTailCount].height * 0.5);
-    ctx1.drawImage(this.babyBody, -this.babyBody.width * 0.5, -this.babyBody.height * 0.5);
-    var babyEyeCount = this.babyEyeCount;
+var babyBodyCount =this.babyBodyCount;
+    ctx1.drawImage(babyBody[babyBodyCount], -babyBody[babyBodyCount].width * 0.5, -babyBody[babyBodyCount].height * 0.5);
+var babyEyeCount = this.babyEyeCount;
     ctx1.drawImage(babyEye[babyEyeCount], -babyEye[babyEyeCount].width * 0.5, -babyEye[babyEyeCount].height * 0.5);
+
     ctx1.restore();
 
 }

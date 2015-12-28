@@ -10,7 +10,7 @@ var bgPic = new Image(); //绘制背景新建图片对象
 var ane; //绘制海葵
 var fruit; //绘制果实
 var mom; //绘制大鱼
-var baby;//绘制小鱼
+var baby; //绘制小鱼
 
 var mx; //鼠标坐标
 var my;
@@ -18,6 +18,11 @@ var my;
 //爱心鱼下 动画
 var babyTail = [];
 var babyEye = [];
+var babyBody = [];
+
+var bigTail = [];
+var bigBody = [];
+var bigEye = [];
 
 document.body.onload = game;
 
@@ -54,11 +59,22 @@ function init() {
 
     }
 
-        for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 2; i++) {
         babyEye[i] = new Image();
         babyEye[i].src = "./src/babyEye" + i + ".png";
-       
+
     }
+    for (var i = 0; i < 19; i++) {
+        babyBody[i] = new Image();
+        babyBody[i].src = "./src/babyFade" + i + ".png";
+
+    }
+
+    for (var i = 0; i < 8; i++) {
+        bigTail[i] = new Image();
+        bigTail[i].src = "./src/bigTail" + i + ".png";
+    }
+
 }
 
 function gameloop() {
@@ -66,7 +82,9 @@ function gameloop() {
     var now = Date.now();
     deltaTime = now - lastTime;
     lastTime = now;
-    if (deltaTime > 40) { deltaTime = 40;}//解决切换页面时 果实不断变大的问题
+    if (deltaTime > 40) {
+        deltaTime = 40;
+    } //解决切换页面时 果实不断变大的问题
     drawbackground();
     ane.draw();
     fruitMonitor();
@@ -74,6 +92,7 @@ function gameloop() {
     ctx1.clearRect(0, 0, canWidth, canHeight);
     mom.draw();
     momFruitCollision();
+    momBabyCollision();
     baby.draw();
 }
 
