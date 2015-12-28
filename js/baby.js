@@ -7,6 +7,9 @@ var babyObj = function() {
     this.babyTail = new Image();
     this.babyTailTimer = 0;
     this.babyTailCount = 0;
+    this.babyEyeTimer = 0;
+    this.babyEyeCount = 0;
+    this.babyEyeInterval = 1000;//时间间隔，当前图片持续多长时间
 
 
 }
@@ -15,10 +18,7 @@ babyObj.prototype.init = function() {
     this.x = canWidth * 0.5 - 50;
     this.y = canHeight * 0.5 + 50;
     this.angle = 0;
-    this.babyEye.src = "./src/babyEye0.png";
     this.babyBody.src = "./src/babyFade0.png";
-
-
 }
 
 babyObj.prototype.draw = function() {
@@ -36,11 +36,19 @@ babyObj.prototype.draw = function() {
     //baby tail count
     this.babyTailTimer += deltaTime;
     if (this.babyTailTimer > 50) {
-        // alert(this.babyTailCount + 1);
         this.babyTailCount = (this.babyTailCount + 1) % 8;
         this.babyTailTimer %= 50;
-         // this.scale(0.5,0.5);
-
+    }
+    //baby eye count
+    this.babyEyeTimer += deltaTime;
+    if (this.babyEyeTimer > this.babyEyeInterval) {
+        this.babyEyeCount = (this.babyEyeCount + 1) % 2;
+        this.babyEyeTimer %= this.babyEyeInterval;
+        if (this.babyEyeCount == 0) {
+            this.babyEyeInterval = Math.random() * 1500 + 2000; //时间间隔为 [2000ms,3500ms)
+        }else{
+            this.babyEyeInterval = 200;
+        }
     }
     ctx1.save();
     //改变原点的位置translate
@@ -51,7 +59,8 @@ babyObj.prototype.draw = function() {
 var babyTailCount = this.babyTailCount;
     ctx1.drawImage(babyTail[babyTailCount],-babyTail[babyTailCount].width * 0.5 + 20,-babyTail[babyTailCount].height * 0.5);
     ctx1.drawImage(this.babyBody, -this.babyBody.width * 0.5, -this.babyBody.height * 0.5);
-    ctx1.drawImage(this.babyEye, -this.babyEye.width * 0.5, -this.babyEye.height * 0.5);
+    var babyEyeCount = this.babyEyeCount;
+    ctx1.drawImage(babyEye[babyEyeCount], -babyEye[babyEyeCount].width * 0.5, -babyEye[babyEyeCount].height * 0.5);
     ctx1.restore();
 
 }

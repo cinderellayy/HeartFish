@@ -17,6 +17,7 @@ var my;
 
 //爱心鱼下 动画
 var babyTail = [];
+var babyEye = [];
 
 document.body.onload = game;
 
@@ -50,6 +51,12 @@ function init() {
     for (var i = 0; i < 8; i++) {
         babyTail[i] = new Image();
         babyTail[i].src = "./src/bigTail" + i + ".png";
+
+    }
+
+        for (var i = 0; i < 2; i++) {
+        babyEye[i] = new Image();
+        babyEye[i].src = "./src/babyEye" + i + ".png";
        
     }
 }
