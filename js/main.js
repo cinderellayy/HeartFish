@@ -67,7 +67,7 @@ function init() {
         babyEye[i].src = "./src/babyEye" + i + ".png";
 
     }
-    for (var i = 0; i < 19; i++) {
+    for (var i = 0; i < 20 ; i++) {
         babyBody[i] = new Image();
         babyBody[i].src = "./src/babyFade" + i + ".png";
 
@@ -93,6 +93,8 @@ function init() {
     ctx1.fillStyle = "white";
     ctx1.font = "8px Verdana";
     ctx1.textAlign = "center";
+    ctx1.shadowBlur = 10;
+    ctx1.shadowColor = "white";
 }
 
 function gameloop() {
@@ -116,10 +118,14 @@ function gameloop() {
 }
 
 function onMouseMove(e) {
-    if (e.offsetX || e.layerX) {
-        mx = e.offsetX == undefined ? e.layerX : e.offsetX;
-        my = e.offsetY == undefined ? e.layerY : e.offsetY;
+   
+    if (!data.gameOver) {
+        if (e.offsetX || e.layerX) {
+            mx = e.offsetX == undefined ? e.layerX : e.offsetX;
+            my = e.offsetY == undefined ? e.layerY : e.offsetY;
 
 
+        }
     }
+
 }
