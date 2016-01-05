@@ -12,7 +12,7 @@ var momObj = function() {
     this.bigEyeTimer = 0;
     this.bigEyeCount = 0;
     this.bigEyeInterval = 1000;
-
+    this.bigBodyCount = 0;
 }
 
 momObj.prototype.init = function() {
@@ -46,7 +46,7 @@ momObj.prototype.draw = function() {
     //mom eye count
     this.bigEyeTimer += deltaTime;
     if (this.bigEyeTimer > this.bigEyeInterval) {
-      
+
         this.bigEyeCount = (this.bigEyeCount + 1) % 2;
         this.bigEyeTimer %= this.bigEyeInterval;
         if (this.bigEyeCount == 0) {
@@ -62,7 +62,14 @@ momObj.prototype.draw = function() {
     ctx1.rotate(this.angle);
     var bigTailCount = this.bigTailCount;
     ctx1.drawImage(bigTail[bigTailCount], -bigTail[bigTailCount].width * 0.5 + 30, -bigTail[bigTailCount].height * 0.5);
-    ctx1.drawImage(this.bigBody, -this.bigBody.width * 0.5, -this.bigBody.height * 0.5);
+    var bigBodyCount = this.bigBodyCount;
+    if (data.double == 1) {
+        ctx1.drawImage(bigBodyOra[bigBodyCount], -bigBodyOra[bigBodyCount].width * 0.5, -bigBodyOra[bigBodyCount].height * 0.5);
+
+    } else {
+        ctx1.drawImage(bigBodyBlue[bigBodyCount], -bigBodyBlue[bigBodyCount].width * 0.5, -bigBodyBlue[bigBodyCount].height * 0.5);
+
+    }
     var bigEyeCount = this.bigEyeCount;
     ctx1.drawImage(bigEye[bigEyeCount], -bigEye[bigEyeCount].width * 0.5, -bigEye[bigEyeCount].height * 0.5);
 

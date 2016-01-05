@@ -21,8 +21,11 @@ var babyEye = [];
 var babyBody = [];
 
 var bigTail = [];
-var bigBody = [];
+var bigBodyOra = [];
+var bigBodyBlue = [];
 var bigEye = [];
+
+var data;
 
 document.body.onload = game;
 
@@ -80,6 +83,16 @@ function init() {
 
     }
 
+    for (var i = 0; i < 8; i++) {
+        bigBodyOra[i] = new Image();
+        bigBodyOra[i].src = "./src/bigSwim" + i + ".png";
+        bigBodyBlue[i] = new Image();
+        bigBodyBlue[i].src = "./src/bigSwimBlue" + i + ".png";
+    }
+    data = new dataObj();
+    ctx1.fillStyle = "white";
+    ctx1.font = "8px Verdana";
+    ctx1.textAlign = "center";
 }
 
 function gameloop() {
@@ -99,6 +112,7 @@ function gameloop() {
     momFruitCollision();
     momBabyCollision();
     baby.draw();
+    data.draw();
 }
 
 function onMouseMove(e) {
