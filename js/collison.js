@@ -34,6 +34,8 @@ function momBabyCollision() {
             // data.reset(); //身体颜色清0;
             //score update 
             data.addScore();
+            //draw halo
+            halo.born(baby.x,baby.y);
 
         }
     }
