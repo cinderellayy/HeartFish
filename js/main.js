@@ -27,6 +27,8 @@ var bigEye = [];
 
 var data;
 
+var wave;
+
 document.body.onload = game;
 
 function game() {
@@ -95,6 +97,9 @@ function init() {
     ctx1.textAlign = "center";
     ctx1.shadowBlur = 10;
     ctx1.shadowColor = "white";
+
+    wave = new waveObj();
+    wave.init();
 }
 
 function gameloop() {
@@ -115,6 +120,7 @@ function gameloop() {
     momBabyCollision();
     baby.draw();
     data.draw();
+    wave.draw();
 }
 
 function onMouseMove(e) {
